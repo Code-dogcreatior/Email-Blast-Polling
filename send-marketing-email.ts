@@ -11,9 +11,9 @@ const emailAccounts = [
     host: 'smtp.163.com',
     port: 465,
     secure: true,
-    user: 'yuruotong1@163.com',
-    pass: 'SNK9Wfndtrwp6sT2',
-    name: '译源翻译',
+    user: '',//邮箱 xxx@163.com
+    pass: '',//密钥
+    name: '',//发送名称 随意写
     isActive: true // 账户是否可用
   },
   // QQ邮箱账户1
@@ -22,8 +22,8 @@ const emailAccounts = [
     host: 'smtp.qq.com',
     port: 587,
     secure: false,
-    user: '2032569127@qq.com',
-    pass: 'okzenkjaklstbfff',
+    user: '',//邮箱 xxx@qq.com
+    pass: '',
     name: '译源翻译',
     isActive: true
   },
@@ -33,8 +33,8 @@ const emailAccounts = [
     host: 'smtp.qq.com',
     port: 587,
     secure: false,
-    user: '1256305343@qq.com',
-    pass: 'ekxjzxnzdmjfbabg',
+    user: '',
+    pass: '',
     name: '译源翻译',
     isActive: true
   }
@@ -161,7 +161,9 @@ export default async function (ctx: FunctionContext) {
 
     try {
       // 方法1：从你的API获取用户信息
-      const response = await fetch('https://dray3mu49t.hzh.sealos.run/chatgpt-get-email')
+      const response = await fetch('') /* 确保获取到的结果为[
+  "xxx@163.com",
+  "xxx@qq.com",...]的格式 */
       const users = await response.json()
 
       if (Array.isArray(users)) {
@@ -446,4 +448,5 @@ function getMillisecondsUntilMidnight(): number {
   tomorrow.setHours(0, 0, 0, 0)
   return tomorrow.getTime() - now.getTime()
 }
+
 
